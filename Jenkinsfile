@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                nodejs(nodeJSInstallationName: '${params.NODE_VERSION}') {
+                nodejs(nodeJSInstallationName: "${params.NODE_VERSION}") {
                     sh 'npm config ls'
                     sh "npm install"
                     sh "npm run build"
