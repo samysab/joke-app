@@ -3,9 +3,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-              sh "npm install"
-              sh "npm run build"
-              sh "npm test"
+                nodejs(nodeJSInstallationName: 'Node 6.x', configId: '18') {
+                    sh 'npm config ls'
+                    sh "npm install"
+                    sh "npm run build"
+                    sh "npm test"
+                }
             }
         }
     }
