@@ -29,6 +29,10 @@ pipeline {
                         image.push()
                     }
                 }
+
+                withCredentials([usernamePassword(credentialsId: 'herokuid', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh "HEROKU_API_KEY=${PASSWORD} npx heroku container:release web --app=jokeappli"
+                }
             }
         }
     }
